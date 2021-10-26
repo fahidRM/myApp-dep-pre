@@ -10,6 +10,8 @@ var mongoose =  require('mongoose');
 
 var app = express();
 
+mongoose.connect("mongodb+srv://dep_pre:dep_pre_123@cluster0.fpqao.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
