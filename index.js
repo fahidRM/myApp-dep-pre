@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 const routes = require('./routes/route');
-mongoose.connect("mongodb://localhost:27017/apidb2");
+mongoose.connect("mongodb+srv://dep_pre:dep_pre_123@cluster0.fpqao.mongodb.net/preDB?retryWrites=true&w=majority");
 app.use(express.json());
 app.use('/api', routes);
 
