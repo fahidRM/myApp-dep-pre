@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var {Fruit} =  require('../models/fruits');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,23 +20,16 @@ router.get('/api/a', function (req, res, next) {
 
 });
 
-router.post('/api/b', function (req, res, next) {
+router.post('/api/b', async(req, res) => {
 
-
-  if (req.body.a) {
-    const data = [
-      {"name": "Apple 2", "price": 1.0}, 
-      {"name": "Banana 2", "price": 0.25}
-    ];
-    res.json(data);
-  } else {
-    res.status(403).json({"message": "noooo"});
-  }
-  
-
-  
-
+  const fruit = new Fruit({
+      name: req.body.name,
+      price: req.body.price
+  });
+  await fruit.save();
+  res.send(fruit);
 
 });
+
 
 module.exports = router;
